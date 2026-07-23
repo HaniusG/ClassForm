@@ -1,0 +1,46 @@
+@use '../../styles/variables' as v; // If you need your global variables here
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.logoContainer {
+  a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: v.$text-light;
+    h2 {
+      color: #4ade80; 
+      font-weight: 700;
+
+      span {
+        color: #38bdf8; 
+      }
+    }
+  }
+
+  img {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+.navLinks {
+  display: flex;
+  gap: 1.5rem;
+
+  a {
+    color: v.$text-light;
+    text-decoration: none;
+    font-weight: 500;
+    
+    &:hover {
+      color: v.$accent-color;
+    }
+  }
+}
