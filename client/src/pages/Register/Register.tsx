@@ -4,6 +4,9 @@ import styles from './Register.module.scss';
 import logoImg from '../../assets/logos/ClassForm.svg';
 import api from '../../api/client';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../store/hooks';
+import { fetchCurrentUser } from '../../store/slices/authSlice';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -11,6 +14,8 @@ const Register = () => {
   const [username, setUsername] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,8 +42,10 @@ const Register = () => {
       });
 
       localStorage.setItem('access_token', res.data.access_token);
+      await dispatch(fetchCurrentUser()).unwrap();
+      
+      navigate('/dashboard');
 
-      window.location.href = '/dashboard';
     } catch (err) {
       if (axios.isAxiosError(err)) {
         const detail = err.response?.data?.detail;

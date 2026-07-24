@@ -1,9 +1,14 @@
 @use '../../styles/variables' as v; // If you need your global variables here
 
+$paper: #f5f3ee;
+$font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+$font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: v.$bg-dark;
   padding: 1rem 0;
 }
 
@@ -34,7 +39,10 @@
   display: flex;
   gap: 1.5rem;
 
-  a {
+  >a {
+    justify-content: center;
+    align-self: center;
+    margin-bottom: 10px;
     color: v.$text-light;
     text-decoration: none;
     font-weight: 500;
@@ -42,5 +50,61 @@
     &:hover {
       color: v.$accent-color;
     }
+  }
+}
+
+.userMenu {
+  display: flex;
+  align-items: center;
+}
+
+.accountLink {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  gap: 4px; 
+  
+  &:hover {
+    .avatar {
+      border-color: v.$accent-color;
+      transform: translateY(-2px);
+    }
+    .username {
+      color: v.$accent-color;
+    }
+  }
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+  background-color: $paper;
+}
+
+.username {
+  font-family: $font-mono;
+  font-size: 11px;
+  color: rgba(245, 243, 238, 0.5);
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease;
+}
+
+.loginBtn {
+  background: rgba(255, 255, 255, 0.1);
+  color: $paper !important;
+  padding: 8px 18px;
+  border-radius: 4px;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  &:hover {
+    background: $paper;
+    color: #10151f !important; 
+    border-color: transparent;
   }
 }

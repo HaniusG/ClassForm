@@ -4,12 +4,17 @@ import styles from './Login.module.scss';
 import logoImg from '../../assets/logos/ClassForm.svg';
 import api from '../../api/client';
 import axios from 'axios';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { useNavigate } from 'react-router-dom';
+import { fetchCurrentUser } from '../../store/slices/authSlice';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,8 +33,9 @@ const Login = () => {
       });
 
       localStorage.setItem('access_token', res.data.access_token);
+      await dispatch(fetchCurrentUser()).unwrap();
 
-      window.location.href = '/dashboard';
+      navigate('/dashboard');
     } catch (err) {
       if (axios.isAxiosError(err)) {
         const detail = err.response?.data?.detail;
