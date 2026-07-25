@@ -34,8 +34,7 @@ class StudentCreate(BaseModel):
   level: Optional[str] = None
   description: Optional[str] = None
   notes: Optional[str] = None
-  tags: List[str] = []  # tag names, e.g. ["Business English", "Morning"]
-
+  tags: List[str] = []  
 
 class StudentUpdate(BaseModel):
   first_name: Optional[str] = None
@@ -47,7 +46,7 @@ class StudentUpdate(BaseModel):
   level: Optional[str] = None
   description: Optional[str] = None
   notes: Optional[str] = None
-  tags: Optional[List[str]] = None  # None = don't touch tags, [] = clear them
+  tags: Optional[List[str]] = None 
 
 
 class StudentResponse(BaseModel):
