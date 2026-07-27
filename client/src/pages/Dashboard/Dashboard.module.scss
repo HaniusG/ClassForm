@@ -1,0 +1,253 @@
+@use "../../styles/variables" as v;
+
+.dashboardWrapper {
+  padding: 2rem 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+  color: v.$text-light;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+}
+
+.errorMessage {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  border: 1px solid #f87171;
+}
+
+.tableContainer {
+  background: v.$surface-dark;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+  border: 1px solid #e5e7eb;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  white-space: nowrap;
+
+  th {
+    background-color: v.$header-dark;
+    padding: 1rem;
+    font-weight: 600;
+    color: v.$text-light;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  td {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    color: v.$text-light;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
+
+.actionsColumn {
+  text-align: right;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 3rem !important;
+  color: #6b7280 !important;
+  font-style: italic;
+}
+
+.loadingText {
+  text-align: center;
+  padding: 2rem;
+  color: #6b7280;
+}
+
+/* --- Buttons --- */
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btnPrimary {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.5rem 1rem;
+
+  &:hover {
+    background-color: #1d4ed8;
+  }
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+.btnSecondary {
+  background-color: #f3f4f6;
+  color: #374151;
+  padding: 0.5rem 1rem;
+  border: 1px solid #d1d5db;
+
+  &:hover {
+    background-color: #e5e7eb;
+  }
+}
+
+.btnEdit {
+  background-color: transparent;
+  color: #2563eb;
+  padding: 0.25rem 0.5rem;
+  margin-right: 5px;
+  border: 1px solid #bfdbfe;
+
+  &:hover {
+    background-color: #eff6ff;
+  }
+}
+
+.btnDelete {
+  background-color: transparent;
+  color: #dc2626;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #fecaca;
+
+  &:hover {
+    background-color: #fef2f2;
+  }
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+  padding: 1rem;
+}
+
+.modalContent {
+  background: v.$bg-dark;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: v.$text-light;
+  }
+
+  input,
+  select,
+  textarea {
+    padding: 0.625rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    color: v.$text-light;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+    background-color: v.$surface-dark;
+
+    &:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    }
+  }
+}
+
+.modalActions {
+  grid-column: span 2;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.tagContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+  > span {
+    background: #032d64;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: flex;
+    color: #f3f4f6;
+    align-items: center;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 640px) {
+  .form {
+    grid-template-columns: 1fr;
+  }
+  .modalActions {
+    grid-column: span 1;
+  }
+}
