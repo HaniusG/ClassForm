@@ -87,9 +87,9 @@ const Login = () => {
               <label htmlFor="password" className={styles.label}>
                 Password
               </label>
-              <a href="/forgot-password" className={styles.forgotLink}>
+              {/* <a href="/forgot-password" className={styles.forgotLink}>
                 forgot?
-              </a>
+              </a> */}
             </div>
             <input
               id="password"

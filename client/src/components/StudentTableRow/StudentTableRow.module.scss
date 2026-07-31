@@ -1,0 +1,54 @@
+@use "../../styles/variables" as v;
+
+.tableRow {
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+
+  td {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    color: v.$text-light;
+  }
+}
+
+.actionsColumn {
+  text-align: right;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  display: flex;
+  align-items: center;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btnEdit {
+  background-color: transparent;
+  color: #2563eb;
+  padding: 0.25rem 0.5rem;
+  margin-right: 5px;
+  border: 1px solid #bfdbfe;
+
+  &:hover {
+    background-color: #eff6ff;
+  }
+}
+
+.btnDelete {
+  background-color: transparent;
+  color: #dc2626;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #fecaca;
+
+  &:hover {
+    background-color: #fef2f2;
+  }
+}
