@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logoImg from '../../assets/logos/ClassForm_Dark.svg';
 import styles from './Header.module.scss';

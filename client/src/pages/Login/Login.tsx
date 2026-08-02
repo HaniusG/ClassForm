@@ -4,7 +4,7 @@ import styles from './Login.module.scss';
 import logoImg from '../../assets/logos/ClassForm.svg';
 import api from '../../api/client';
 import axios from 'axios';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { useAppDispatch } from '../../store/hooks';
 import { useNavigate } from 'react-router-dom';
 import { fetchCurrentUser } from '../../store/slices/authSlice';
 
