@@ -26,7 +26,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 
 origins = [
-    "https://classform-two.vercel.app",
+    "https://classform-web.vercel.app",
     "http://localhost:5173", 
 ]
 
