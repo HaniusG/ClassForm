@@ -11,4 +11,5 @@ dependencies = [
     "imagekitio>=5.8.0",
     "python-dotenv>=1.2.2",
     "uvicorn[standard]>=0.51.0",
+    "asyncpg"
 ]
