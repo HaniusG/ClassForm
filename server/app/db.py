@@ -1,16 +1,21 @@
 from collections.abc import AsyncGenerator
+from datetime import datetime, timezone
 import uuid
 
-from sqlalchemy import Column, String, Text, DateTime, ForeignKey, Table
-from sqlalchemy.dialects.postgresql import UUID
-from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
-from sqlalchemy.orm import DeclarativeBase, relationship
-from datetime import datetime
-from fastapi_users.db import SQLAlchemyUserDatabase, SQLAlchemyBaseUserTableUUID
 from fastapi import Depends
+from fastapi_users.db import SQLAlchemyBaseUserTableUUID, SQLAlchemyUserDatabase
+from sqlalchemy import Column, DateTime, ForeignKey, String, Table, Text, UUID
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
+from sqlalchemy.orm import DeclarativeBase, relationship
+import os
+from dotenv import load_dotenv
 
-DATABASE_URL = "sqlite+aiosqlite:///./test.db"
+load_dotenv()
 
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL is missing from the .env file")
 class Base(DeclarativeBase):
   pass
 
@@ -51,8 +56,7 @@ class Student(Base):
   description = Column(Text, nullable=True)
   notes = Column(Text, nullable=True)
   profile_image_url = Column(String, nullable=True)
-  created_at = Column(DateTime, default=datetime.utcnow)
-
+  created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
   teacher = relationship("User", back_populates="students")
   tags = relationship("Tag", secondary=student_tags, back_populates="students")
 
